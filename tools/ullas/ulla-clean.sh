@@ -45,6 +45,7 @@ echo "Working on $1"
   -fuzz 20% -fill white -opaque '#FF6976' \
   -fuzz 20% -fill white -opaque '#FF8883' \
   -fuzz 20% -fill white -opaque '#4B9FE2' \
+  -fuzz 20% -fill white -opaque '#E93244' \
   -blur 1x65535 -contrast -normalize -despeckle -despeckle -sharpen 1 -posterize 3 \
   "$1.clean.jpg"
 
