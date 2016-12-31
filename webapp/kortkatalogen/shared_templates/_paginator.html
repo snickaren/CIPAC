@@ -1,0 +1,52 @@
+<div class="row text-center">
+  <nav>
+    <ul class="pagination pagination-lg">
+
+      <li>
+        {% if previous_box_card %}
+        <a href="{% url "cardurl" previous_box_card.catalog_sequence_number %}">Föreg. låda</a>
+        {% else %}
+        <a href="#" class="disabled">Föreg. låda</a>
+        {% endif %}
+      </li>
+
+      <li>
+        {% if previous10_card %}
+        <a href="{% url "cardurl" previous10_card.catalog_sequence_number %}">-10</a>
+        {% else %}
+        <a href="#" class="disabled">-10</a>
+        {% endif %}
+      </li>
+      <li class="pagination-previous">
+        {% if previous_card %}
+        <a property="xhv:previous" href="{% url "cardurl" previous_card.catalog_sequence_number %}"><span aria-hidden="true">&laquo;</span></a>
+        {% else %}
+        <a href="#" class="disabled"><span aria-hidden="true">&laquo;</span></a>
+        {% endif %}
+      </li>
+      <li class="pagination-next">
+        {% if next_card %}
+        <a property="xhv:next" href="{% url "cardurl"  next_card.catalog_sequence_number %}"><span aria-hidden="true">&raquo;</span></a>
+        {% else %}
+        <a href="#" class="disabled"><span aria-hidden="true">&raquo;</span></a>
+        {% endif %}
+      </li>
+
+      <li>
+        {% if next10_card %}
+        <a href="{% url "cardurl" next10_card.catalog_sequence_number %}">+10</a>
+        {% else %}
+        <a href="#" class="disabled">+10</span></a>
+        {% endif %}
+      </li>
+      <li>
+
+        {% if next_box_card %}
+        <a href="{% url "cardurl"  next_box_card.catalog_sequence_number %}">Nästa låda</a>
+        {% else %}
+        <a href="#" class="disabled">Nästa låda</span></a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+</div>

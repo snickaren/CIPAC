@@ -1,0 +1,45 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>{% block head_title %}Kortkataloger{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/kb-style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/kb.css' %}" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block head_opengraph %}
+    <meta property="og:url" content="https://musikkatalogen.kb.se" />
+    <meta property="og:title" content="Musikkatalogen - Kungliga biblioteket" />
+    <meta property="og:description" content="Digitaliserad version av den äldre musikkatalogen på Kungliga biblioteket." />
+    <meta property="og:image" content="https://musikkatalogen.kb.se/static/img/0092_alfa_20140708_0027_beskuren.jpg" />
+    {% endblock %}
+  </head>
+  <body>
+    {% include "_navbar.html" %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include "_footer.html" %}
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDomains", ["*.musikkatalogen.kb.se","*.musikkatalogen.kb.se"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.kb.se/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 39]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//analytics.kb.se/piwik.php?idsite=39" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+  </body>
+</html>
