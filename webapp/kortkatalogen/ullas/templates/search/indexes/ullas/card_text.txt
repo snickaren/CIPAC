@@ -1,4 +1,0 @@
-{{ object.name }}
-{{ object.catalog_sequence_number }}
-{{ object.ocr_text|default_if_none:"" }}
-{{ object.ocr_text|default_if_none:"" }}
