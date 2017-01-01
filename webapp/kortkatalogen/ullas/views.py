@@ -18,8 +18,8 @@ def index(request):
 def search(request):
     if request.GET.get("q"):
         query = request.GET.get("q", None)
-        result = Card.objects.search(query)[:50]
-        paginator = Paginator(result, 5)
+        result = Card.objects.search(query)[:100]
+        paginator = Paginator(result, 20)
 
         pageno = request.GET.get('page')
 
@@ -38,7 +38,7 @@ def search(request):
 def browse(request, card_catalog_sequence_number):
     card = Card.objects.get(catalog_sequence_number=card_catalog_sequence_number)
     box = card.box
-    box_cards = box.cards.all()
+    box_cards = box.cards.all().only("catalog_sequence_number", "name") #for right column list display
     image_url = box.folder_name + "/" + card.filename
     fullres_image_url = box.folder_name + "/" + card.filename
     image_back_url = box.folder_name + "/" + card.filename_back

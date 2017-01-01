@@ -36,7 +36,7 @@ Sök i Ullas tidningskatalog
       {% if page %}
         <h2 id="result">Sökresultat</h2>
         <p>{{ page.paginator.count }} träffar.</p>
-        {% bootstrap_paginate page range=8 show_prev_next="true" show_first_last="true" %}
+        {% bootstrap_paginate page range=20 show_prev_next="true" show_first_last="true" %}
 
         {% for result in page.object_list %}
 
@@ -50,7 +50,7 @@ Sök i Ullas tidningskatalog
         </div>
         {% endfor %}
 
-        {% bootstrap_paginate page range=10 %}
+        {% bootstrap_paginate page range=20 %}
 
       {% else %}
         {% if query %}
