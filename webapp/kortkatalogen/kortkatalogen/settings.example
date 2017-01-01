@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'bootstrap_pagination',
-    'haystack',
     'base',
     'ullas',
 ]
@@ -79,11 +79,13 @@ WSGI_APPLICATION = 'kortkatalogen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'kortkatalogen',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1'}
+        'USER': 'example',
+        'PASSWORD': 'example',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+        }
 }
 
 

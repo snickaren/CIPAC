@@ -41,10 +41,6 @@ class BoxAdmin(admin.ModelAdmin):
         return instance.catalog.name
 
 
-class CatalogAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
-
 
 admin.site.register(Card, CardAdmin)
 admin.site.register(Box, BoxAdmin)
-admin.site.register(Catalog, CatalogAdmin)

@@ -4,8 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from ullas.models import *
 from django.db.models import Q
-from haystack.query import SearchQuerySet
-from haystack.inputs import AutoQuery, Exact, Clean
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
 
@@ -16,8 +15,27 @@ def index(request):
     return render_to_response('index.html', locals())
 
 
+def search(request):
+    if request.GET.get("q"):
+        query = request.GET.get("q", None)
+        result = Card.objects.search(query)[:50]
+        paginator = Paginator(result, 5)
+
+        pageno = request.GET.get('page')
+
+        try:
+            page = paginator.page(pageno)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            page = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            page = paginator.page(paginator.num_pages)
+
+    return render_to_response('search.html', locals())
+
+
 def browse(request, card_catalog_sequence_number):
-    catalog = Catalog.objects.get(pk=1)
     card = Card.objects.get(catalog_sequence_number=card_catalog_sequence_number)
     box = card.box
     box_cards = box.cards.all()

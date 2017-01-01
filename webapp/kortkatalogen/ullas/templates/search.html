@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load highlight %}
 {% load bootstrap_pagination %}
 
 {% block head_title %}
@@ -13,7 +12,7 @@ Sök i Ullas tidningskatalog
     <div class="col-md-12">
       <h1>Sök i katalogen</h1>
       <p>Observera att sökningen sker i det automattolkade textunderlaget. Handskriven text går inte att söka i.</p>
-      <form class="form-horizontal global-search" action="/search/" role="search">
+      <form class="form-horizontal global-search" action="/ullas/search/" role="search">
         <div class="col-md-6">
           <label class="sr-only" for="q">Sök efter</label>
           <input type="search" class="form-control" id="q" name="q" value="{{query}}">
@@ -43,8 +42,8 @@ Sök i Ullas tidningskatalog
 
         <div class="row result">
           <div class="col-md-8">
-            <h3><a href="{% url "cardurl" result.catalog_slug result.catalog_sequence_number %}">{{result.catalog_sequence_number}} {{result.name}}</a></h3>
-            <p>{% highlight result.text with query max_length 200 html_tag "mark" %}</p>
+            <h3><a href="{% url "cardurl" result.catalog_sequence_number %}">Kort {{result.catalog_sequence_number}}</a></h3>
+            <p>{{ result.ocr_text }}</p>
           </div>
           <div class="col-md-4">
           </div>

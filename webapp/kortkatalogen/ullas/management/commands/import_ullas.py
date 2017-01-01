@@ -6,32 +6,24 @@ from os import listdir
 from os.path import isfile, join
 import glob
 
+
+
 class Command(BaseCommand):
     help = 'Import folders of catalog cards.'
-    args = '<path> <catalog_id>'
+    args = '<path>'
 
     def add_arguments(self, parser):
         parser.add_argument('path')
-        parser.add_argument('catalog_id', type=int)
+
 
     def handle(self, *args, **options):
-
         path = options['path']
-        catalog_id = options['catalog_id']
 
-        self.stdout.write("Importing %s to catalog %s" % (path, catalog_id))
+        self.stdout.write("Importing %s to catalog" % path)
 
         #check if path exists
         if not os.path.isdir(path):
             raise CommandError("Path %s does not exist" % path)
-
-        # check if catalog exists
-        try:
-            catalog = Catalog.objects.get(pk = catalog_id)
-        except Catalog.DoesNotExist:
-            # abort everything
-            self.stdout.write("No catalog object found with id %s. Unable to import data." % catalog_id)
-            raise
 
         # list box folders in path
         box_folders = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
@@ -42,7 +34,7 @@ class Command(BaseCommand):
 
             #check if folder name exists
             try:
-                box = Box.objects.get(folder_name=folder, catalog=catalog)
+                box = Box.objects.get(folder_name=folder)
                 self.stdout.write("Loaded existing box %s" % box.id)
 
             except Box.DoesNotExist:
@@ -51,15 +43,13 @@ class Command(BaseCommand):
                 # <sequence number>_<label>
                 # e.g. 01_K-So
 
-                self.stdout.write(folder)
+                self.stdout.write("Creating %s " % folder)
                 sequence_number = int(folder.split("_")[0])
                 label = folder.split("_")[1]
 
                 box = Box(folder_name=folder,
                         sequence_number=sequence_number,
-                        label=label,
-                        slug=label,
-                        catalog=catalog)
+                        label=label,)
                 box.save()
 
                 self.stdout.write(self.style.SUCCESS("Created box %s" % box.id))
@@ -67,8 +57,9 @@ class Command(BaseCommand):
 
             #import folder content and create cards
             scanfiles = [f for f in sorted(glob.glob(os.path.join(path, folder, "*.jpg"))) if not f.endswith(".clean.jpg")]
+            self.stdout.write(self.style.SUCCESS("Found %s files" % len(scanfiles)))
 
-            # iterate over file pairs
+            # iterate over file item pairs
             for i in range(0, len(scanfiles), 2):
                 front = scanfiles[i]
                 back = scanfiles[i+1]
@@ -79,7 +70,7 @@ class Command(BaseCommand):
                 except Card.DoesNotExist:
                     card = Card(filename=f,box=box)
 
-                # parse card sequence number in box
+                # parse card sequence number in box from filename
                 sequence_number = int(f.split("_")[-1].replace(".jpg",""))
                 card.sequence_number=sequence_number
 
@@ -91,7 +82,7 @@ class Command(BaseCommand):
                         ocr_text = ocrfile.read()
 
                     card.ocr_text=ocr_text
-                    card.name=sequence_number
+                    #card.name=sequence_number
 
                 # backside
                 card.filename_back = os.path.split(back)[1]
@@ -104,3 +95,4 @@ class Command(BaseCommand):
                     card.ocr_text_back=ocr_text
 
                 card.save()
+                self.stdout.write(self.style.SUCCESS("Created card %s" % card.id))

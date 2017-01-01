@@ -2,20 +2,23 @@ from django.db import models
 from base.models import *
 from appconf import AppConf
 from django.conf import settings
-
-
-
-class Catalog(BaseCatalog):
-    pass
-
+from django.contrib.postgres.search import SearchVector
+from djorm_pgfulltext.models import SearchManager
+from djorm_pgfulltext.fields import VectorField
 
 class Box(BaseBox):
-    catalog = models.ForeignKey(Catalog, verbose_name="Tillhör katalog", related_name="boxes",)
     pass
 
 
 class Card(BaseCard):
     box = models.ForeignKey(Box, related_name="cards", verbose_name="kort")
+    search_index = VectorField()
+    objects = SearchManager(
+        fields = ('name', 'ocr_text', 'ocr_text_back'),
+        config = 'pg_catalog.swedish',
+        search_field = 'search_index',
+        auto_update_search_field = True
+    )
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):
