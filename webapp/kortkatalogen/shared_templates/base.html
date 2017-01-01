@@ -12,23 +12,27 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% block head_opengraph %}
-    <meta property="og:url" content="https://musikkatalogen.kb.se" />
+    <meta property="og:url" content="https://kortkataloger.kb.se" />
     <meta property="og:title" content="Musikkatalogen - Kungliga biblioteket" />
     <meta property="og:description" content="Digitaliserad version av den äldre musikkatalogen på Kungliga biblioteket." />
     <meta property="og:image" content="https://musikkatalogen.kb.se/static/img/0092_alfa_20140708_0027_beskuren.jpg" />
     {% endblock %}
   </head>
   <body>
+    {% block navbar %}
     {% include "_navbar.html" %}
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
 
+    {% block footer %}
     {% include "_footer.html" %}
+    {% endblock %}
     <!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];
-      _paq.push(["setDomains", ["*.musikkatalogen.kb.se","*.musikkatalogen.kb.se"]]);
+      _paq.push(["setDomains", ["*.kortkataloger.kb.se"]]);
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {

@@ -10,4 +10,4 @@ def index(request):
     # TODO: Find all catalogs and list them
 
     # Read boxes
-    return render_to_response('index.html', locals())
+    return render_to_response('base/index.html', locals())

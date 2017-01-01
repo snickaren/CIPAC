@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block head_opengraph %}
+<meta property="og:url" content="https://kortkataloger.kb.se/" />
+<meta property="og:title" content="Kortkataloger på Kungliga biblioteket" />
+<meta property="og:description" content="Digitaliserade kortkataloger på Kungliga biblioteket" />
+<meta property="og:image" content="" />
+{% endblock %}
+{% block content %}
+
+    <div class="container" role="main" vocab="http://schema.org/" resource="" typeof="CollectionPage">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Kortkataloger på Kungliga biblioteket</h1>
+          <meta property="name" content="" />
+          <meta property="mainEntityOfPage" href="http://libris.kb.se/bib/16922704" />
+          <meta property="hasPart" content="/ullas/" />
+          <meta property="publisher" href="http://id.kb.se/resource/auth/121848" />
+
+          <div property="description">
+            <p>(beskrivningstext)</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Kataloger</h2>
+
+          <p>Följande kataloger är tillgängliga</p>
+
+          <dl class="pagination pagination-sm">
+
+            <dt><a href="/ullas/">Ullas tidningskatalog</a></dt>
+            <dd>Katalog över dagstidningar. Katalogen omfattar...</dd>
+
+          </dl>
+        </div>
+      </div>
+    </div>
+{% endblock %}

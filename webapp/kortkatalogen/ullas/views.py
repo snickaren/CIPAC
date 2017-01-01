@@ -12,7 +12,7 @@ def index(request):
     index_cards = Card.objects.filter(letter__isnull=False).exclude(letter='').order_by("letter")
 
     # Read boxes
-    return render_to_response('index.html', locals())
+    return render_to_response('ullas/index.html', locals())
 
 
 def search(request):
@@ -32,7 +32,7 @@ def search(request):
             # If page is out of range (e.g. 9999), deliver last page of results.
             page = paginator.page(paginator.num_pages)
 
-    return render_to_response('search.html', locals())
+    return render_to_response('ullas/search.html', locals())
 
 
 def browse(request, card_catalog_sequence_number):
@@ -78,7 +78,7 @@ def browse(request, card_catalog_sequence_number):
     except:
         next_box_card = None
 
-    return render_to_response('browse.html', locals())
+    return render_to_response('ullas/browse.html', locals())
 
 
 
