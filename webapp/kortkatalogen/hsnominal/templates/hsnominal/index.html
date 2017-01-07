@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block head_opengraph %}
+<meta property="og:url" content="https://kortkataloger.kb.se/hsnominal/" />
+<meta property="og:title" content="HS nominalkatalog - Kungliga biblioteket" />
+<meta property="og:description" content="Digitaliserad version av Handsskriftsamlingens nominalkatalog på Kungliga biblioteket." />
+<meta property="og:image" content="https://kortkataloger.kb.se/static/img/0092_alfa_20140708_0027_beskuren.jpg" />
+{% endblock %}
+{% block navbar %}
+{% include "hsnominal/_navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron bg-happy-muted-light-blue">
+  <div class="container">
+    <h1 class="text-small text-black calltoaction">Sök i HS nominalkatalog</h1>
+    <form class="form-horizontal" method="get" action="/hsnominal/search/" role="search">
+      <div class="form-group">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+          <label class="sr-only" for="q">Sök efter</label>
+          <input type="search" id="q" name="q" class="form-control">
+        </div>
+        <div class="col-md-2 col-xs-12">
+          <button type="submit" id="searchbtn" class="btn-block btn btn-primary">Sök</button>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </form>
+    <div class="col-md-12 col-xs-12"><a href="#alfa" class="text-black">&hellip;eller bläddra via alfabetiskt index.</a></div>
+  </div>
+</div>
+
+    <div class="container" role="main" vocab="http://schema.org/" resource="" typeof="CollectionPage">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Om HS nominalkatalog</h1>
+          <meta property="name" content="Om HS nominalkatalog" />
+          <meta property="mainEntityOfPage" href="http://libris.kb.se/bib/16922704" />
+          <meta property="hasPart" content="/hsnominal/1/" />
+          <meta property="publisher" href="http://id.kb.se/resource/auth/121848" />
+
+          <div property="description">
+            <p>(beskrivningstext)</p>
+          </div>
+
+        </div>
+        <div class="col-md-6 teaser">
+          <p><a href="">(exempelkort)</a></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2 id="alfa">Alfabetiskt index</h2>
+          <p>Utgå från det alfabetiska indexet genom att välja en bokstav nedan.</p>
+          <ul class="pagination pagination-sm">
+            {% for card in index_cards %}
+            <li>
+            <a href="{% url "cardurl" card.catalog_sequence_number %}">{{card.letter}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+{% endblock %}

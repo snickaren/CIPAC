@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_title %}
+Om handskriftsamlingens nominalkatalog
+{% endblock %}
+
+{% block navbar %}
+{% include "hsnominal/_navbar.html" %}
+{% endblock %}
+{% block content %}
+
+    <div class="container" role="main">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-header">Om handskriftsamlingens nominalkatalog</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p>(text)</p>
+
+          <h2>Innehåll</h2>
+          <p>(text)</p>
+          <p>På sidan för ett kort kan du klicka på bilden för att se den i full upplösning.</p>
+
+          <h2>Frågor om katalogen?</h2>
+          <p>(text)</p>
+
+          <h2>Innehållet är fritt att återanvända</h2>
+          <p>Bildfiler och texter i katalogen är fria att återanvända enligt <span lang="en">Creative Commons</span> <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
+        </div>
+
+        <div class="col-md-4">
+          <p>Exempel</p>
+        </div>
+      </div>
+    </div>
+{% endblock %}
