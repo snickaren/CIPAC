@@ -24,5 +24,14 @@ Images, CSS-files etc. Does not contain scanned cards.
 ### ullas
 App for "Ullas tidningskatalog".
 
+### hsnominal
+App for "HS nominalkatalog".
+
+
+## Steps to import card data
+After preprocessing and OCR, see the management commands import_nnn.py
+in each catalog for information on how to import catalog cards and OCR
+files. After importing, run the resequence_nnn.py management command to
+generate global card ID:s.
 
 
