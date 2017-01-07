@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap_pagination',
     'base',
     'ullas',
+    'hsnominal',
 ]
 
 MIDDLEWARE = [
