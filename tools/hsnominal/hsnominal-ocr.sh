@@ -12,8 +12,8 @@
 
 export TESSDATA_PREFIX=/path/to/tesseract/tessdata/parent/folder
 
-if [ ! -f "$1.clean9.txt" ]; then
-  tesseract "$1.clean9.jpg" "$1.clean9" --oem 2 --psm 6 -l swe+lat hsnominal
+if [ ! -f "$1.txt" ]; then
+  tesseract "$1.normalized.tif" "$1" --oem 2 --psm 6 -l swe+lat hsnominal
 else
-  echo "Skipping $1.clean9.txt"
+  echo "Skipping $1.txt"
 fi
