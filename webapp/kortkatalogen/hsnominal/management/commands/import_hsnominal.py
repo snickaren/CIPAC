@@ -73,7 +73,7 @@ class Command(BaseCommand):
                 card.sequence_number=sequence_number
 
                 # get corresponding ocr file
-                ocr_filename = f.replace(".jpg",".jpg.clean9.txt")
+                ocr_filename = f.replace(".jpg",".jpg.txt.clean.txt")
 
                 if os.path.isfile(os.path.join(path, folder, ocr_filename)):
                     with open(os.path.join(path, folder, ocr_filename), 'r') as ocrfile:
