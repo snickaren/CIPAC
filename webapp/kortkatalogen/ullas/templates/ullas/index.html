@@ -57,7 +57,7 @@
           <ul class="pagination pagination-sm">
             {% for card in index_cards %}
             <li>
-            <a href="{% url "cardurl" card.catalog_sequence_number %}">{{card.letter}}</a>
+            <a href="{% url "ullas:cardurl" card.catalog_sequence_number %}">{{card.letter}}</a>
             </li>
             {% endfor %}
           </ul>
