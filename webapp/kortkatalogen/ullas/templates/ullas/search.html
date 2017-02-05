@@ -45,7 +45,7 @@ Sök i Ullas tidningskatalog
 
         <div class="row result">
           <div class="col-md-8">
-            <h3><a href="{% url "ullacardurl" result.catalog_sequence_number %}">Kort {{result.catalog_sequence_number}}</a></h3>
+            <h3><a href="{% url "ullas:cardurl" result.catalog_sequence_number %}">Kort {{result.catalog_sequence_number}}</a></h3>
             <p>{{ result.ocr_text }}</p>
           </div>
           <div class="col-md-4">

@@ -9,7 +9,7 @@
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
     <meta property="og:title" content="Kort {{card.catalog_sequence_number}}: {{card.name}}" />
     <meta property="og:description" content="{{card.name}} Katalogkort {{card.catalog_sequence_number}}." />
-    <meta property="og:image" content="/static/ullas/{{fullres_image_url}}" />
+    <meta property="og:image" content="/carddata/ullas/{{fullres_image_url}}" />
 {% endblock %}
 
 {% block navbar %}
@@ -69,7 +69,7 @@
           </div>
           {% endif %}
 
-          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:Kungl.bib@kb.se?subject=Fråga om kort {{card.catalog_sequence_number|urlencode}} ({{card.name|urlencode}}) i musikkatalogen&amp;body=%0D%0A%0D%0A%0D%0A%0D%0ANamn: {{card.name|urlencode}}%0D%0AKortlänk: {{request.build_absolute_uri|urlencode}}" role="button">Fråga om detta kort</a></p>
+          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:Kungl.bib@kb.se?subject=Fråga om kort {{card.catalog_sequence_number|urlencode}} ({{card.name|urlencode}}) i Ullas katalog&amp;body=%0D%0A%0D%0A%0D%0A%0D%0ANamn: {{card.name|urlencode}}%0D%0AKortlänk: {{request.build_absolute_uri|urlencode}}" role="button">Fråga om detta kort</a></p>
         </div>
         <div class="col-md-3" role="complementary">
           <h2>Låda {{card.box.sequence_number}} {{card.box.label}}</h2>
