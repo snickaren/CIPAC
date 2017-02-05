@@ -75,7 +75,8 @@ class Command(BaseCommand):
                 card.sequence_number=sequence_number
 
                 # get corresponding ocr file
-                ocr_filename = f.replace(".jpg",".jpg.clean.jpg.txt")
+                ocr_filename = f.replace(".jpg",".jpg.txt")
+                print("Working on " + f)
 
                 if os.path.isfile(os.path.join(path, folder, ocr_filename)):
                     with open(os.path.join(path, folder, ocr_filename), 'r') as ocrfile:
@@ -86,7 +87,7 @@ class Command(BaseCommand):
 
                 # backside
                 card.filename_back = os.path.split(back)[1]
-                ocr_filename_back = card.filename_back.replace(".jpg",".jpg.clean.jpg.txt")
+                ocr_filename_back = card.filename_back.replace(".jpg",".jpg.txt")
 
                 if os.path.isfile(os.path.join(path, folder, ocr_filename_back)):
                     with open(os.path.join(path, folder, ocr_filename_back), 'r') as ocrfile:
