@@ -19,7 +19,7 @@
 
     <div class="container card" role="main" resource="" vocab="http://schema.org/" prefix="xhv:http://www.w3.org/1999/xhtml/vocab#" typeof="ItemPage">
       <meta property="isPartOf" href="https://kortkataloger.kb.se/ullas/" />
-      {% include "_paginator.html" %}
+      {% include "ullas/_paginator.html" %}
 
       <div class="row">
         <div class="col-md-12">
@@ -32,8 +32,8 @@
           <meta property="representativeOfPage" content="true" />
           <meta property="inLanguage" href="http://lexvo.org/id/iso639-3/swe" />
           <meta property="license" href="http://creativecommons.org/publicdomain/mark/1.0/" />
-          <a property="contentUrl" href="/static/ullas/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/static/ullas/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
-          <a property="contentUrl" href="/static/ullas/{{fullres_image_back_url}}"><img property="embedUrl" class="preview" src="/static/ullas/{{image_back_url}}"  alt="Baksida {{card.name}} {{card.ocr_text_back}}"></a>
+          <a property="contentUrl" href="/carddata/ullas/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/carddata/ullas/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
+          <a property="contentUrl" href="/carddata/ullas/{{fullres_image_back_url}}"><img property="embedUrl" class="preview" src="/carddata/ullas/{{image_back_url}}"  alt="Baksida {{card.name}} {{card.ocr_text_back}}"></a>
         </div>
         <div class="col-md-3">
             <div class="panel panel-default">
@@ -77,9 +77,9 @@
             {% for c in box_cards %}
               <li>
               {% ifequal c.catalog_sequence_number card.catalog_sequence_number %}
-              <a href="{% url "cardurl" c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}</a>
+              <a href="{% url "ullas:cardurl" c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}</a>
               {% else %}
-              <a href="{% url 'cardurl' c.catalog_sequence_number %}">{{c.catalog_sequence_number}}</a>
+              <a href="{% url "ullas:cardurl" c.catalog_sequence_number %}">{{c.catalog_sequence_number}}</a>
               {% endifequal %}
               </li>
             {% endfor %}
@@ -87,7 +87,7 @@
         </div>
       </div>
 
-      {% include "_paginator.html" %}
+      {% include "ullas/_paginator.html" %}
     </div>
 
 {% endblock %}
