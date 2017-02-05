@@ -5,7 +5,7 @@ from django.forms import Textarea
 
 
 class CardAdmin(admin.ModelAdmin):
-    list_display = ('name', 'box_name', 'order', 'catalog_sequence_number', 'filename', 'ocr_text', 'letter', 'updated_at')
+    list_display = ('filename', 'box_name', 'catalog_sequence_number', 'name', 'ocr_text', 'letter', 'updated_at')
     search_fields = ['catalog_sequence_number', 'filename', 'name', 'ocr_text']
     readonly_fields = ('image_tag', 'image_tag_back')
     fieldsets = (

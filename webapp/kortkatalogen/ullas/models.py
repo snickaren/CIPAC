@@ -22,11 +22,11 @@ class Card(BaseCard):
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):
-        return """<img style="width:450px" alt="Kort %s" src="/static/%s/%s" />""" % (self.catalog_sequence_number, settings.ULLAS_CARDS_SUBFOLDER, self.box.folder_name + "/" + self.filename)
+        return """<img style="width:450px" alt="Kort %s" src="/carddata/%s/%s" />""" % (self.catalog_sequence_number, settings.ULLAS_CARDS_SUBFOLDER, self.box.folder_name + "/" + self.filename)
 
     def image_tag_back(self):
         if self.filename_back:
-            return """<img style="width:450px" alt="Baksida kort %s" src="/static/%s/%s" />""" % (self.catalog_sequence_number, settings.ULLAS_CARDS_SUBFOLDER, self.box.folder_name + "/" + self.filename_back)
+            return """<img style="width:450px" alt="Baksida kort %s" src="/carddata/%s/%s" />""" % (self.catalog_sequence_number, settings.ULLAS_CARDS_SUBFOLDER, self.box.folder_name + "/" + self.filename_back)
         else:
             return None
 
@@ -34,7 +34,6 @@ class Card(BaseCard):
     image_tag.allow_tags = True
     image_tag_back.short_description = 'Bild'
     image_tag_back.allow_tags = True
-
 
 
 

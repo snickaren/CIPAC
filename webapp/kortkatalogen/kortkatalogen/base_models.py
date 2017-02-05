@@ -37,7 +37,7 @@ class BaseBox(models.Model):
 
 
 class BaseCard(models.Model):
-    name = models.CharField(max_length=255, db_index=True, verbose_name="Kortnamn", help_text="Rubriken som visas överst på en kortsida")
+    name = models.CharField(max_length=255, blank=True, db_index=True, verbose_name="Kortnamn", help_text="Rubriken som visas överst på en kortsida")
     filename = models.CharField(max_length=255, db_index=True, verbose_name="Filnamn", help_text="Filnamnet för bildfilen")
     filename_back = models.CharField(max_length=255, db_index=True, verbose_name="Filnamn baksida", help_text="Filnamnet för bildfilen av baksidan")
     ocr_text = models.TextField(blank=True, help_text="Automatiskt OCR-tolkad text från kortet.")
