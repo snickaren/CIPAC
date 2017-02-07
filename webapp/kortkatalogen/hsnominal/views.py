@@ -7,6 +7,11 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
+def about(request):
+    # Read boxes
+    return render_to_response('hsnominal/about.html', locals())
+
+
 def index(request):
 
     # Read alphabet index cards
