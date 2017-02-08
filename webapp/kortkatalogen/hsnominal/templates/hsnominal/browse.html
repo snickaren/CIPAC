@@ -9,7 +9,7 @@
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
     <meta property="og:title" content="Kort {{card.catalog_sequence_number}}: {{card.name}}" />
     <meta property="og:description" content="{{card.name}} Katalogkort {{card.catalog_sequence_number}}." />
-    <meta property="og:image" content="/static/hsnominal/{{fullres_image_url}}" />
+    <meta property="og:image" content="/carddata/hsnominal/{{fullres_image_url}}" />
 {% endblock %}
 
 {% block navbar %}
@@ -19,7 +19,7 @@
 
     <div class="container card" role="main" resource="" vocab="http://schema.org/" prefix="xhv:http://www.w3.org/1999/xhtml/vocab#" typeof="ItemPage">
       <meta property="isPartOf" href="https://kortkataloger.kb.se/hsnominal/" />
-      {% include "_paginator.html" %}
+      {% include "hsnominal/_paginator.html" %}
 
       <div class="row">
         <div class="col-md-12">
@@ -32,7 +32,7 @@
           <meta property="representativeOfPage" content="true" />
           <meta property="inLanguage" href="http://lexvo.org/id/iso639-3/swe" />
           <meta property="license" href="http://creativecommons.org/publicdomain/mark/1.0/" />
-          <a property="contentUrl" href="/static/hsnominal/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/static/hsnominal/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
+          <a property="contentUrl" href="/carddata/hsnominal/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/carddata/hsnominal/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
             <div class="panel panel-default">
@@ -68,7 +68,7 @@
           </div>
           {% endif %}
 
-          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:Kungl.bib@kb.se?subject=Fråga om kort {{card.catalog_sequence_number|urlencode}} ({{card.name|urlencode}}) i musikkatalogen&amp;body=%0D%0A%0D%0A%0D%0A%0D%0ANamn: {{card.name|urlencode}}%0D%0AKortlänk: {{request.build_absolute_uri|urlencode}}" role="button">Fråga om detta kort</a></p>
+          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:Kungl.bib@kb.se?subject=Fråga om kort {{card.catalog_sequence_number|urlencode}} ({{card.name|urlencode}}) i HS nominalkatalog&amp;body=%0D%0A%0D%0A%0D%0A%0D%0ANamn: {{card.name|urlencode}}%0D%0AKortlänk: {{request.build_absolute_uri|urlencode}}" role="button">Fråga om detta kort</a></p>
         </div>
         <div class="col-md-3" role="complementary">
           <h2>Låda {{card.box.sequence_number}} {{card.box.label}}</h2>
@@ -76,9 +76,9 @@
             {% for c in box_cards %}
               <li>
               {% ifequal c.catalog_sequence_number card.catalog_sequence_number %}
-              <a href="{% url "cardurl" c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}</a>
+              <a href="{% url "hsnominal:cardurl" c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}</a>
               {% else %}
-              <a href="{% url 'cardurl' c.catalog_sequence_number %}">{{c.catalog_sequence_number}}</a>
+              <a href="{% url "hsnominal:cardurl" c.catalog_sequence_number %}">{{c.catalog_sequence_number}}</a>
               {% endifequal %}
               </li>
             {% endfor %}
@@ -86,7 +86,7 @@
         </div>
       </div>
 
-      {% include "_paginator.html" %}
+      {% include "hsnominal/_paginator.html" %}
     </div>
 
 {% endblock %}
