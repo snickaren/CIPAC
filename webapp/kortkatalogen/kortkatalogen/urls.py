@@ -22,3 +22,5 @@ urlpatterns = [
     url(r'^hsnominal/', include('hsnominal.urls', namespace="hsnominal")),
     url(r'^$', include('base.urls')),
 ]
+
+admin.site.site_header = 'Kortkatalogen admin'
